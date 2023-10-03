@@ -5,9 +5,36 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f5f6fa 
+
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#root {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 3rem 20px repeat(10, 1fr); 
+  gap: 10px; 
+  height: 100vh;
 }
+
+div {
+  display: grid;
+}
+
+/* For Webkit-based browsers */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff00;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ffba0a;
+  border-radius: 10px;
+}
+
+

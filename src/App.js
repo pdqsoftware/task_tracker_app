@@ -1,25 +1,29 @@
-import logo from './logo.svg';
+import { useState } from "react"
 import './App.css';
+import TaskForm from './components/TaskForm'
+import TaskItem from "./components/TaskItem"
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    // taskItes contains a complete list of all the tasks
+    const [taskItems, setTaskItems] = useState([])
+
+
+    return (
+        <>
+            {/* TaskForm */}
+            <TaskForm setTaskItems={ setTaskItems } taskItems={ taskItems } />
+
+            {/* TasksContainer */}
+            <div className='task-tracker-container'>
+                {/* TaskItem */}
+                {
+                    taskItems.map((task, index) => {
+                        return <TaskItem key={index} task={task} />
+                    })
+                }
+            </div>
+        </>
+    )
 }
 
 export default App;

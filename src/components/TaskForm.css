@@ -1,0 +1,90 @@
+/* Styling for the add task container */
+.add-task-container {
+    z-index: 10000;
+    position: sticky;
+    top: 0px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 3rem;
+    grid-column: 5/ 9;
+    grid-row-start: 3; 
+    background-color: #3498db;
+    border-radius: 8px;
+    padding: 20px;
+  }
+  
+  /* Styling for the add task input */
+  .add-task-input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.196);
+  }
+
+  .add-task-input:focus {
+    outline: none;
+  }
+  
+  .add-task-input::placeholder {
+    color: #bbbbbb;
+  }
+
+  .add-task-input:focus::placeholder {
+    color: transparent;
+  }
+  
+  /* Styling for the add task button */
+  .add-task-btn {
+    background-color: #2ecc71;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-task-btn:hover {
+    background-color: #25ad5d;
+  }
+  
+  
+/* Media queries for responsiveness */
+@media screen and (max-width: 576px) {
+  .add-task-container  {
+      /* Adjust the width for smaller screens */
+      grid-column: 1/13;
+      margin: 1rem;
+  }
+}
+
+@media screen and (min-width: 577px) and (max-width: 768px) {
+  .add-task-container {
+    /* Adjust the width for medium screens */
+    grid-column: 2/12;
+    margin: 1rem;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 992px) {
+  .add-task-container {
+      /* Adjust the width for larger medium screens */
+      grid-column: 4/10;
+      margin: 1rem;
+      max-width: 700px;
+  }
+}
+
+@media screen and (min-width: 993px) and (max-width: 1200px) {
+  .add-task-container {
+    max-width: 800px; /* Adjust the width for larger screens */
+    grid-column: 5/9;
+    margin: 1rem;
+  
+  }
+}

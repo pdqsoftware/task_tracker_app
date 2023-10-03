@@ -1,38 +1,62 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.task-tracker-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: .6rem;
+  grid-column: 5/ 9;
+  grid-row-start: 4; 
+  background-color: #3498db;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: fit-content;
+  min-height: 30rem;
 }
 
-.App-link {
-  color: #61dafb;
+.task-tracker-info-bar {
+background-color: rgb(233, 233, 233);
+padding: 1.2rem;
+display: flex;
+flex-direction: row;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.task-tracker-info-bar>span {
+padding: .5rem;
+background-color: #ffffff;
+cursor: pointer;
+}
+
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 576px) {
+  .task-tracker-container  {
+      /* Adjust the width for smaller screens */
+      grid-column: 1/13;
+      margin: 1rem;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media screen and (min-width: 577px) and (max-width: 768px) {
+  .task-tracker-container  {
+    /* Adjust the width for medium screens */
+    grid-column: 2/12;
+    margin: 1rem;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 992px) {
+  .task-tracker-container {
+      /* Adjust the width for larger medium screens */
+      grid-column: 4/10;
+      margin: 1rem;
+      max-width: 700px;
+  }
+}
+
+@media screen and (min-width: 993px) and (max-width: 1200px) {
+  .task-tracker-container {
+    max-width: 800px; /* Adjust the width for larger screens */
+    grid-column: 5/9;
+    margin: 1rem;
+  
   }
 }
