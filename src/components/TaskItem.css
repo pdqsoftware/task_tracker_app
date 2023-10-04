@@ -29,6 +29,7 @@
     outline: none;
     border: none;
     cursor: pointer;
+    background-color: red;
   }
 
   /** complete checkBox **/
