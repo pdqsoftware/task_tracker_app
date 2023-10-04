@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
+import { Routes, Route, Link } from 'react-router-dom';
 import './App.css';
-import TaskForm from './components/TaskForm'
-import TaskItem from "./components/TaskItem"
+import Home from "./components/Home";
+import AboutPage from "./components/About";
 
 function App() {
     // taskItems contains a complete list of all the tasks, as an array
@@ -46,43 +47,37 @@ function App() {
     // Note: empty array, means useEffect() runs once when the component starts
     // Note: no array at all, means useEffect() runs every time the component updates
 
-    return (
-        <>
-            {/* TaskForm */}
-            <TaskForm setTaskItems={ setTaskItems } taskItems={ taskItems } />
 
-            {/* TasksContainer */}
-            <div className='task-tracker-container'>
-                {/* Info Bar */}
-                <div className="task-tracker-info-bar">
-                    <span>{taskItems.length} items</span>
-                    <span 
-                        style={{ backgroundColor: filterType === "all" && "#dcdcdc"}}
-                        onClick={() => setFilterType("all")}
-                    >
-                        All
-                    </span>
-                    <span
-                        style={{ backgroundColor: filterType === "completed" && "#dcdcdc"}}
-                        onClick={() => setFilterType("completed")}
-                    >
-                        Completed
-                    </span>
-                    <span 
-                        style={{ backgroundColor: filterType === "pending" && "#dcdcdc"}}
-                        onClick={() => setFilterType("pending")}
-                    >
-                        Pending
-                    </span>
-                </div>
-                {/* TaskItem */}
-                {
-                    filteredTasks.map((task, index) => {
-                        return <TaskItem key={index} task={task} deleteItemById={deleteItemById} taskCompletion={taskCompletion} />
-                    })
-                }
-            </div>
-        </>
+    //
+    // In its prevoious form the state was lost as the user moved between pages.
+    // So 'App' was removed from the <Routes> section of index.js - this is because the contents of <Routes> will rerender whenever a route changes.
+    // By including only App's JSX, below, within <Routes> then only the jsx rerenders leaving the state, above, intact - very clever!
+    //
+    // Now all the JSX from App has been moved to <Home>.
+    // Then all the other <Route>s have been included here.  This ensures that App state never rerenders
+    //
+
+    return (
+        <Routes>
+            <Route 
+                index
+                path="/" 
+                element={
+                    <Home 
+                        taskItems={taskItems}
+                        setTaskItems={setTaskItems}
+                        filteredTasks={filteredTasks}
+                        setFilteredTasks={setFilteredTasks}
+                        filterType={filterType}
+                        setFilterType={setFilterType}
+                        deleteItemById={deleteItemById}
+                        taskCompletion={taskCompletion}
+                    />
+                } 
+            />
+            <Route path="/about" Component={AboutPage} />
+            <Route path="*" element={<div>Page not found!<Link to="/">Go to home page</Link></div>} />
+        </Routes>
     )
 }
 

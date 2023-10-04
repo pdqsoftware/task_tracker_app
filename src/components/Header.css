@@ -1,0 +1,36 @@
+.header {
+    grid-column: span 12;
+    grid-row: 1 / span 2;
+    background-color: #ffffff7c;
+    color: rgb(0, 0, 0);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: fit-content;
+  }
+  
+
+  .header-item {
+    margin: 0 15px;
+    font-size: 18px;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    transition: color 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .header-item-active {
+    color: #118300;
+    font: 800;
+    text-decoration: underline;
+  }
+
+  .header-item-pending {
+    color: #0b7dff;
+  }
+
+  .header-item:hover {
+    color: #127bf3;
+  }

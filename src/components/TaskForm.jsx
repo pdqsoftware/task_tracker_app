@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import "./TaskForm.css"
 
 const TaskForm = ({ setTaskItems, taskItems }) => {
-    const [inputValue, setInputValue] = useState()
+    const [inputValue, setInputValue] = useState("")
 
     const addTaskItem = () => {
         // Ensure some text, other than spaces, has been entered
