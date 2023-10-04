@@ -3,6 +3,7 @@ import { Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 import Home from "./components/Home";
 import AboutPage from "./components/About";
+import Team from "./components/Team";
 
 function App() {
     // taskItems contains a complete list of all the tasks, as an array
@@ -75,7 +76,12 @@ function App() {
                     />
                 } 
             />
-            <Route path="/about" Component={AboutPage} />
+            {/* element and Component, below, seem to be interchangeable */}
+            <Route path="/about" element={<AboutPage />} >
+                {/* The 'index' entry below means that the Route refers to the /about Route (because it is the currently active one) */}
+                <Route index element={<Link to="team">Meet the team</Link>} />
+                <Route path="team" element={<Team />} />
+            </Route>
             <Route path="*" element={<div>Page not found!<Link to="/">Go to home page</Link></div>} />
         </Routes>
     )

@@ -1,8 +1,16 @@
-import React, { useState } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import "./TaskForm.css"
 
 const TaskForm = ({ setTaskItems, taskItems }) => {
     const [inputValue, setInputValue] = useState("")
+
+    const inputRef = useRef(null)
+
+    useEffect(() => {
+        // Focus on the input element when the component mounts
+        inputRef.current.focus()
+        // [] ensure that the useEffect only runs once when the component renders
+    }, [])
 
     const addTaskItem = () => {
         // Ensure some text, other than spaces, has been entered
@@ -28,7 +36,7 @@ const TaskForm = ({ setTaskItems, taskItems }) => {
     return (
         // Listen for the 'Enter' key being depressed and call addTaskItem()
         <div className='add-task-container' onKeyDown={(e) => e.key === "Enter" && addTaskItem()}>
-            <input value={inputValue} onChange={(event) => setInputValue(event.target.value) } type="text" placeholder="Add a task" className='add-task-input' />
+            <input ref={inputRef} value={inputValue} onChange={(event) => setInputValue(event.target.value) } type="text" placeholder="Add a task" className='add-task-input' />
             <button onClick={addTaskItem} className='add-task-btn'>Add</button>
         </div>
     )
