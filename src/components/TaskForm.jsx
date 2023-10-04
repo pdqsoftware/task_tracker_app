@@ -15,7 +15,23 @@ const TaskForm = ({ setTaskItems, taskItems }) => {
     const addTaskItem = () => {
         // Ensure some text, other than spaces, has been entered
         if (inputValue.trim() === "") return
-        setTaskItems([...taskItems, { text: inputValue, id: taskItems.length, completed: false }])
+
+        // .length will not always give the correct id.  Must check for highest id in the array.
+        // setTaskItems([...taskItems, { text: inputValue, id: taskItems.length, completed: false }])
+
+        // Use reduce() to find the maximum Id, then increment it
+        let maxId = 0
+        if (taskItems.length) {
+            // Will always produce the object with the highest id - so take its .id and add 1 (useful for huge arrays)
+            maxId = parseInt(taskItems.reduce((prev, current) => (prev && prev.id > current.id) ? prev : current).id) + 1
+        }
+
+        // Or use map() to find the maximum Id (works well with small arrays)
+        const maxId2 = Math.max(...taskItems.map(task => task.id), 0) + 1
+
+        // Update the taskItems array
+        setTaskItems([...taskItems, { text: inputValue, id: maxId2, completed: false }])
+
         // Clear input value after update
         setInputValue("")
     }
